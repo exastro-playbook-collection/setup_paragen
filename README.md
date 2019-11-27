@@ -1,38 +1,60 @@
-Role Name
-=========
+# Ansible Role: setup_paragen
 
-A brief description of the role goes here.
+## Trademarks
 
-Requirements
-------------
+* Linuxは、Linus Torvalds氏の米国およびその他の国における登録商標または商標です。
+* RedHat、RHEL、CentOSは、Red Hat, Inc.の米国およびその他の国における登録商標または商標です。
+* Windows、PowerShellは、Microsoft Corporation の米国およびその他の国における登録商標または商標です。
+* Ansibleは、Red Hat, Inc.の米国およびその他の国における登録商標または商標です。
+* pythonは、Python Software Foundationの登録商標または商標です。
+* NECは、日本電気株式会社の登録商標または商標です。
+* その他、本ロールのコード、ファイルに記載されている会社名および製品名は、各社の登録商標または商標です。
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Description
 
-Role Variables
---------------
+本ロールではパラメータ生成共通部品を指定したAnsibleサーバーにインストールします。
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+パラメータ生成共通部品とは、収集ロールを利用するために必要となるモジュールで以下機能を有します。
+1. 構築済みサーバーから収集した設定情報から必要な値を抽出する
+2. 抽出した値をパラメータ変数とマッピング（Key/Value）する
+3. マッピングしたパラメータをYAML形式で出力する
 
-Dependencies
-------------
+## Supports
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+パラメータ生成共通部品は以下環境での動作をサポートします。
 
-Example Playbook
-----------------
+- Ansibleサーバー（本ロールのインストール先）
+  - OS：RHEL7.5（CentOS7.5）
+  - Ansible：Version 2.7
+  - Python：2.7 or 3.6
+- 対象ホスト側（パラメータ生成共通部品の解析対象）
+  - 利用する収集ロールに準拠します
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Requirements
 
-    - hosts: servers
+* 本ロールではインストール先にあらかじめAnsibleがインストールされている必要があります。
+* 本ロールはインストール先のsudo実行権限を持つユーザーで実行する必要があります。
+
+## Role Variables
+
+無し
+
+## Dependencies
+
+無し
+
+## Example Playbook
+
+    - hosts: local
+      become: yes
       roles:
-         - { role: username.rolename, x: 42 }
+        - setup_paragen
 
-License
--------
+## License
 
-BSD
+Apache License 2.0
 
-Author Information
-------------------
+## Author Information
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+None
+

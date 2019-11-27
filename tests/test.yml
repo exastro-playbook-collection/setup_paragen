@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: local
+  become: yes
   roles:
     - setup_paragen
