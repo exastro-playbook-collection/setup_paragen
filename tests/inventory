@@ -1,7 +1,5 @@
-[server]
+[local]
 localhost
 
-[server:vars]
-ansible_user=user
-ansible_password=password
+[local:vars]
 ansible_become_pass=password
