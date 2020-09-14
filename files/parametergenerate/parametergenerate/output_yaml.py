@@ -17,7 +17,8 @@ def save_yaml(target_file, save_data):
             allow_unicode=True,  # ユニコードをエスケープしない
             encoding='utf-8',  # バイトとして出力して、そのままファイルに書き込めるように
             default_flow_style=False,
-            explicit_start=True
+            explicit_start=True,
+            width=10000
         )
 
     # the save directory exist?
