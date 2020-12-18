@@ -19,6 +19,28 @@
 2. 抽出した値をパラメータ変数とマッピング（Key/Value）する
 3. マッピングしたパラメータをYAML形式で出力する
 
+### Notes
+
+AnsibleサーバーにPython2、Python3を両方ともインストールしている環境で本Roleを利用してインストールすると、ansibleが動作するPythonとパラメータ生成共通部品インストール先Pythonが食い違ってしまい、正しく動作しない場合があります  
+上記のような環境では本Roleでインストール後、以下の方法で正しくパラメータ共通部品がインストールされているかご確認ください  
+
+* インストール状況確認手順  
+1. ansible --version を実行し、ansibleが動作しているPythonがPython2かPython3かを確認する  
+2. Python2の場合はpip2 list、Python3の場合はpip3 listを実行し、parametergenerateパッケージが存在することを確認する  
+3. ansibleが動作しているPythonパッケージにparametergenerateが存在しなかった場合、以下の手動インストール手順でインストールを行ってください  
+
+* 手動インストール手順  
+1. Ansibleサーバーでカレントフォルダを以下に移動  
+   <setup_paragenロールフォルダ>/files/  
+2. 以下コマンドを実行（既に存在している場合は上書きコピー）  
+    sudo mkdir -p /usr/share/ansible/plugins/action/  
+    sudo cp action_plugins/parameter_generate.py /usr/share/ansible/plugins/action/parameter_generate.py  
+3. 以下コマンドを実行  
+    - ansibleがPython2で動作している場合  
+        sudo pip2 install parametergenerate/  
+    - ansibleがPython3で動作している場合  
+        sudo pip3 install parametergenerate/  
+
 ## Supports
 
 パラメータ生成共通部品は以下環境での動作をサポートします。
