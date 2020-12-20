@@ -65,12 +65,31 @@ AnsibleサーバーにPython2、Python3を両方ともインストールして�
 
 無し
 
-## Example Playbook
+## Example
 
+* Playbook
+    ```
+    ---
     - hosts: local
       become: yes
       roles:
         - setup_paragen
+    ```
+* Inventory
+    ```
+    [local]
+    localhost
+
+    [local:vars]
+    ansible_python_interpreter=/usr/bin/python3
+    ansible_become_pass=<sudoパスワード>
+    ```
+    (*) AnsibleをPython2で動作させる場合、ansible_python_interpreterの定義は不要
+
+* Command
+    ```
+    ansible-playbook -c local -i <Inventory> <Playbook>
+    ```
 
 ## License
 
