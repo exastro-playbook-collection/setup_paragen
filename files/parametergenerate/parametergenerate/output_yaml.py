@@ -1,6 +1,4 @@
 #!/usr/bin/python
-# -*- coding: UTF-8 -*-
-from __future__ import unicode_literals
 import codecs
 import io
 import os.path
@@ -28,5 +26,5 @@ def save_yaml(target_file, save_data):
         os.makedirs(save_dir)
 
     # save yaml file.
-    with io.open(target_file, 'wb') as fp:
+    with open(target_file, 'wb') as fp:
         fp.write(yaml_bytes)

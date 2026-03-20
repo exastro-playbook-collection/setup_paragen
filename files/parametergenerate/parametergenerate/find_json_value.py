@@ -1,5 +1,4 @@
 #!/usr/bin/python
-# -*- coding: UTF-8 -*-
 import io
 import json
 import re
@@ -56,7 +55,7 @@ def find_value(target_file, search_params, encoding=None, trap_undefined_error=F
     key_value_table = {}
 
     # load jsondata
-    with io.open(target_file, 'r', encoding=encoding) as json_file:
+    with open(target_file, encoding=encoding) as json_file:
         json_data = json.load(json_file)
 
     for param in search_params:

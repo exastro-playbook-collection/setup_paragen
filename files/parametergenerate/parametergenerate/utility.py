@@ -1,7 +1,6 @@
 #!/usr/bin/python
-# -*- coding: UTF-8 -*-
 import chardet
-from collections import MutableSequence, MutableMapping
+from collections.abc import MutableSequence, MutableMapping
 import io
 import re
 
@@ -84,7 +83,7 @@ def path_types(obj, path_list):
         if re_result:
             element = re_result.group(1)
             path_list[index] = element
-        if ((issubclass(current.__class__, MutableMapping) and element in current)):
+        if (issubclass(current.__class__, MutableMapping) and element in current):
             # print("-path_types(MutableMapping):", element, current)
             result.append([element, current[element].__class__])
             current = current[element]
@@ -227,7 +226,7 @@ def path2dict(param, value):
 
 
 def check_encode(target_file):
-    with io.open(target_file, 'rb') as f:
+    with open(target_file, 'rb') as f:
         char_code = chardet.detect(f.read())
         file_encode = char_code['encoding']
     return file_encode

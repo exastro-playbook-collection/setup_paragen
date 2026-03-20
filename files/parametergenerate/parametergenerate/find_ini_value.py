@@ -1,5 +1,4 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
 import io
 import re
 
@@ -16,7 +15,7 @@ def find_value(target_file, search_params, encoding=None, trap_undefined_error=F
     key_value_table = {}
 
     # if INI_FILE in codeList:
-    with io.open(target_file, 'r', encoding=encoding) as testfile:
+    with open(target_file, encoding=encoding) as testfile:
         lines = testfile.readlines()
 
     for param in search_params:

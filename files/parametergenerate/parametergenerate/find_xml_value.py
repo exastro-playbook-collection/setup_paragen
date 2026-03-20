@@ -1,5 +1,4 @@
 #!/usr/bin/python
-# -*- coding: UTF-8 -*-
 import io
 import re
 import xml.etree.ElementTree as ET
@@ -15,7 +14,7 @@ def find_value(target_file, search_params, encoding=None, trap_undefined_error=F
     if encoding is None:
         encoding = utility.check_encode(target_file)
 
-    with io.open(target_file, 'r', encoding=encoding) as xml_file:
+    with open(target_file, encoding=encoding) as xml_file:
 
         codeline = xml_file.readlines()
         match = re.search(r'^\<\?.*xml.*?encoding.*\?>', codeline[0])
