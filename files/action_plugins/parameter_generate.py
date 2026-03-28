@@ -17,7 +17,7 @@ class ActionModule(ActionBase):
     def run(self, tmp=None, task_vars=None):
         if task_vars is None:
             task_vars = dict()
-        result = super(ActionModule, self).run(tmp, task_vars)
+        result = super().run(tmp, task_vars)
         if self._play_context.check_mode:
             result['skipped'] = True
             result['msg'] = "skipped, this module does not support check_mode."

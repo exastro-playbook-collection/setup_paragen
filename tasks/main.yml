@@ -5,6 +5,7 @@
   become: yes
   pip:
     name: "{{ role_path }}/files/parametergenerate"
+    extra_args: "--no-index --find-links={{ playbook_dir }}/packages/ -r {{ playbook_dir }}/requirement.txt"
 
 - name: create action plugins folder
   become: yes

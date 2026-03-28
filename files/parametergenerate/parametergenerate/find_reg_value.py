@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 import io
 
 from jinja2 import Template
@@ -50,7 +48,7 @@ class ValidatedParam:
         self.valuename = valuename
         self.template = template
         self.value_type = value_type
-        self.regpath = '{}{}{}'.format(keys, Entry.KEY_VALUE_DELIMITER, valuename)
+        self.regpath = f'{keys}{Entry.KEY_VALUE_DELIMITER}{valuename}'
 
     @staticmethod
     def _parse(param):
@@ -100,7 +98,7 @@ class Registry:
 
     def entries(self):
         """Generate all entries in this registry."""
-        with io.open(self.file_path, encoding=self.encoding) as f:
+        with open(self.file_path, encoding=self.encoding) as f:
             while True:
                 key = self._next_key(f)
                 if key is None:
@@ -207,7 +205,7 @@ class Keys:
         return key_string
 
 
-class _Value(object):
+class _Value:
     # set on each class
     TYPE_PREFIX = None
 
@@ -253,7 +251,7 @@ class ValueString(_Value):
 class ValueMultiString(_Value):
     TYPE_PREFIX = 'hex(7):'
     def as_default(self):
-        return '{}{}'.format(self.TYPE_PREFIX, self.data_string)
+        return f'{self.TYPE_PREFIX}{self.data_string}'
 
     @classmethod
     def from_typedata_string(cls, reg_string, name, typedata_string):

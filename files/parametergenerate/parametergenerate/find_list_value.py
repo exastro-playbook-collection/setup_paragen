@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 from collections import namedtuple, OrderedDict
 import io
 import re
@@ -40,7 +38,7 @@ def find_value(target_file, search_params,
     for s_param, elements in zip(search_params, param_elements):
         if not elements:
             if trap_undefined_error:
-                raise KeyError('no matches found for {}'.format(s_param))
+                raise KeyError(f'no matches found for {s_param}')
         else:
             # elementがある場合のみ、結果の配列を出力に入れる
             tmp_table = utility.path2dict(s_param, elements)
@@ -142,7 +140,7 @@ class ListCollector:
         return OrderedDict(zip(param.element_names, found.groups()))
 
     def _lines(self):
-        with io.open(self.file_path, encoding=self.encoding) as f:
+        with open(self.file_path, encoding=self.encoding) as f:
             for line in f:
                 line = line.rstrip('\n')
                 yield line

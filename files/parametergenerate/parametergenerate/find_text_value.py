@@ -1,5 +1,4 @@
 #!/usr/bin/python
-# -*- coding: UTF-8 -*-
 import io
 import re
 
@@ -18,7 +17,7 @@ def find_value(target_file, search_params, encoding=None, trap_undefined_error=F
     key_value_table = {}
 
     # open a file. if raise exception, caller catches exception.
-    with io.open(target_file, "r", encoding=encoding) as f:
+    with open(target_file, encoding=encoding) as f:
         # read and process line by line.
         for line in f:
             # process parameters one by one.

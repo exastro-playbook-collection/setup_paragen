@@ -1,5 +1,4 @@
 #!/usr/bin/python
-# -*- coding: UTF-8 -*-
 from . import find_text_value
 from . import find_xml_value
 from . import find_json_value
@@ -41,7 +40,7 @@ class ParameterGenerate:
         targetfile = self.collect_root + '/' + targetfile
         if (not os.path.isfile(targetfile)):
             if trap_undefined_error:
-                raise IOError(
+                raise OSError(
                     errno.ENOENT, os.strerror(errno.ENOENT), targetfile)
             else:
                 return
